@@ -1,0 +1,92 @@
+/*  -----------------------------------------------------------------------------------------------
+    Single Author Info
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.author-info
+{
+	margin-bottom: 48px;
+	padding: 24px;
+	border-top: 4px solid $black;
+	border-bottom: 1px solid $grey;
+	border-left: 1px solid $grey;
+	border-right: 1px solid $grey;
+	
+	.author-info-inner
+	{
+		@extend .flex-item;
+		align-items: flex-start;
+		
+		@include media('<=768px')
+		{
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.author-avatar
+		{
+			margin-right: 24px;
+			width: 128px;
+			
+			@include media('<=768px')
+			{
+				margin-right: 0;
+				margin-bottom: 24px;
+			}
+			
+			a
+			{
+				display: flex;
+				
+				img
+				{
+					width: 128px;
+					height: 128px;
+					object-fit: cover;
+				}
+			}
+		}
+
+		.author-description
+		{
+			width: calc(100% - 128px);
+			margin-top: -4px;
+			font-size: 16px;
+			
+			@include media('<=768px')
+			{
+				width: 100%;
+				margin-top: 0;
+			}
+			
+			.author-name
+			{
+				font-size: 18px;
+			    position: relative;
+			    margin-top: 0;
+			    text-transform: uppercase;
+			    letter-spacing: 0.1em;
+			    color: #121212;
+			    position: relative;
+			    @extend .flex-item;
+
+			 	&:before
+			 	{
+	 			    content: "";
+	 		        width: 5px;
+	 		        height: 5px;
+	 		        display: inline-block;
+	 		        @extend .bgaccent;
+	 		        margin-right: 12px;
+			 	}
+			}
+
+			p
+			{
+				margin-top: 0;
+				opacity: .7;
+				text-align: justify;
+			}
+		}
+	}
+}

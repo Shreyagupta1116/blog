@@ -1,0 +1,55 @@
+/*  -----------------------------------------------------------------------------------------------
+  Breadcrumbs
+  @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+  
+.breadcrumbs
+{
+	font-size: 14px;
+	margin-right: 0 !important;
+	
+	@include media('<=tablet')
+	{
+		margin-top: 12px;
+		font-size: 12px;
+	}
+	
+	.trail-browse
+	{
+		display: none;
+	}
+
+	.trail-items
+	{
+		display: flex;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		flex-wrap: wrap;
+		
+		.trail-item
+		{
+			margin-right: 6px;
+			
+			&:after
+			{
+				content: "/";
+				padding-left: 6px;
+			}
+
+			&.trail-begin
+			{
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+
+			&.trail-end
+			{
+				&:after
+				{
+					display: none;
+				}
+			}
+		}
+	}
+}

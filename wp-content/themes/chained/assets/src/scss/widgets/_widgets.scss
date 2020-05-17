@@ -1,0 +1,65 @@
+/*  -----------------------------------------------------------------------------------------------
+    Widgets Include Files
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+
+@import "widgets_mixins";
+
+
+.widget-area 
+{
+    padding: 24px 0;
+
+    .widget 
+    {   
+        @include widget();
+        
+        @import 'widget_categories';
+        @import 'widget_about_me';
+        @import 'widget_recent_posts';
+        @import 'widget_popular_posts';
+        @import 'widget_recent_entries';
+        @import 'widget_recent_comments';
+        @import 'widget_nav_menu';
+        @import 'widget_calendar';
+        @import 'widget_rss';
+        @import 'widget_gallery';
+        @import 'widget_blog_subscription';
+        @import 'widget_facebook';
+        @import 'widget_search';
+
+        &.widget_media_image
+        {
+            text-align: center;
+        }
+
+        //==============================================================================
+        // widget_tag_cloud
+        //==============================================================================
+
+        &.widget_tag_cloud
+        {
+            @include widget_tags();
+        }
+
+        //==============================================================================
+        // widget_archive
+        //==============================================================================
+
+        &.widget_archive
+        {
+            @include widget_dropdown();
+        }
+
+        //==============================================================================
+        // widget_text
+        //==============================================================================
+
+        &.widget_text 
+        {
+            font-size: 14px;
+            line-height: 1.8;
+        }        
+    }
+}

@@ -1,0 +1,132 @@
+/*  -----------------------------------------------------------------------------------------------
+    Offcanvas Search
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.offcanvas-search 
+{
+	position: fixed;
+	top: 0; 
+	right: -100%;
+	width: 320px;
+	height: 100%;
+	background: $white;
+	opacity: 0;
+	visibility: hidden;
+	z-index: -1;
+	transition: all .25s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	
+
+	@include media('<tablet')
+	{
+		width: 85%;
+	}
+	
+	&.is-visible
+	{
+		opacity: 1;
+		visibility: visible;
+		z-index: 3;
+		right: 0;
+	}
+
+	#offcanvas-search-close
+	{
+		position: absolute;
+		right: 24px;
+		top: 24px;
+		
+		svg
+		{
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	.offcanvas-search-content
+	{
+		width: 100%;
+		margin: 64px 0;
+		padding: 0 24px;
+		text-align: center;
+		
+		.search-form 
+		{
+			width: 100%;
+			margin-bottom: 12px;
+			// overflow: hidden;
+			position: relative;
+
+			& + p 
+			{
+				margin: 0 auto;
+				font-size: 14px;
+			}
+
+			> label, .search-field 
+			{
+				display: block;
+				box-sizing: border-box;
+				position: static;
+				height: auto;
+			}
+
+			.search-field 
+			{
+				padding: 8px 15px;
+				border: 0;
+				width: 100%;
+				display: block;
+				height: auto;
+				border: 0;
+				padding: 0;
+				opacity: .75;
+				font-size: 13px;
+				height: auto;
+				-webkit-appearance: none;
+				border: 1px solid $grey;
+				padding: 12px;
+				letter-spacing: .5px;
+
+				@include input-placeholder 
+				{
+					color: currentColor;
+				}
+
+				@include media('<=desktop') 
+				{
+					font-size: 15px;
+				}
+			}
+
+			.search-submit 
+			{
+				height: 34px;
+				padding: 0 10px 3px 10px;
+				float: right;
+				transform: translateY(-100%);
+
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				
+				border: 1px solid white;
+				display: none;
+				@extend .black;
+				@extend .bgaccent;
+			}
+
+			.screen-reader-text
+			{
+				position: absolute;
+				top: calc(100% + 12px);
+				
+				width: 100%;
+			}
+		}
+	}
+}

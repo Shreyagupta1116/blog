@@ -1,0 +1,84 @@
+/*  -----------------------------------------------------------------------------------------------
+    Single Format Quote
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-quote
+{
+	.entry-featured
+	{
+		position: relative;
+		display: flex;
+		
+		&:after
+		{
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba($black, .6);
+			transition: all .25s;
+			opacity: 1;
+			visibility: visible;
+			z-index: 1;
+		}
+		
+		.content-quote
+		{
+			color: $white;
+			text-transform: uppercase;
+			padding: 32px;
+			position: absolute;
+			top: 50%;
+			z-index: 2;
+			transform: translate(0, -50%);
+			
+			.content-quote-wrapper
+			{
+				position: relative;
+				z-index: 1;
+				
+				.quote
+				{
+					svg
+					{
+						width: 32px;
+						height: 32px;
+						fill: $accent_color;
+						
+						@include media('<=tablet')
+						{
+							width: 24px;
+							height: 24px;
+						}
+					}
+				}
+
+				blockquote
+				{
+					font-size: 39px;
+					font-weight: bold;
+					
+					@include media('<=tablet')
+					{
+						font-size: 16px;
+					}
+				}
+			}
+			
+			.wp-block-quote
+			{
+				cite
+				{
+					font-weight: lighter;
+					font-size: 18px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+/*  -----------------------------------------------------------------------------------------------
+    Columns
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+
+&.masonry--4col-bighd
+{
+	.wrapper
+	{
+		.masonry-panel
+		{
+			width: 100%;
+			max-width: calc(100%/4 - 24px);
+			
+			@include media('<=huge')
+			{
+				max-width: calc(100%/3 - 21.3333333333px);
+			}
+
+			@include media('<=desktop')
+			{
+				max-width: calc(100%/2 - 16px);
+			}
+
+			@include media('<ads')
+			{
+				max-width: 100% ; 
+			}
+		}
+	}
+}

@@ -1,0 +1,202 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Loop Include styles
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+$gutter: 32px;
+
+.masonry
+{
+	@import 'pagination';
+	@import 'posts-mixins';
+	@import 'columns_calculation';
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	
+	.wrapper
+	{
+		max-width: 1600px;
+		
+		// 48 distance above the older posts button, 51 the height of the button 
+		// and more 48 down like up - 24 from the elements iteslf
+		margin-bottom: 123px; 
+		
+		&:after
+		{
+			content: '';
+			display: block;
+			clear: both;
+		}
+	
+		.grid-gutter
+		{
+			width: $gutter;
+		}
+
+		.masonry-panel 
+		{
+		  transform: scale(0);
+		  animation: scaleIn 0.25s cubic-bezier(0.64, 0.57, 0.67, 1);
+		  animation-fill-mode: forwards;
+		  float: left;
+		  margin-bottom: $gutter;
+		  
+		  @include media('<=tablet')
+		  {
+		  	margin-bottom: ($left_and_right_mobile * 2); //default 24 - max bottom to be 24 * 2 (plus padding from content)
+		  }
+
+			@for $i from 1 through 16 {
+				&:nth-child(#{$i})
+				{
+					animation-delay: $i * 200ms;
+				}
+			}
+
+			.page-header
+			{
+				.author &
+				{
+					border-left: 1px solid $grey;
+					border-right: 1px solid $grey;
+					border-bottom: 1px solid $grey;
+					border-top: 4px solid $black;
+					padding: 24px;
+				}
+			}
+
+			.entry-header
+			{
+				.page-title
+				{
+					font-size: 48px;
+					margin: 0;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+					border-bottom: 3px solid;
+					
+					.author &
+					{
+						border-bottom: none;
+					}
+					
+					@include media('<=tablet')
+					{
+						text-align: center;
+						border-bottom: 0;
+						font-size: 32px;
+					}
+				}
+
+				.taxonomy-description
+				{
+					margin-top: 12px;
+					font-size: 16px;
+				}
+			}
+
+			&__content 
+			{
+			    align-items: center;
+			    display: flex;
+			    justify-content: center;
+			    width: 100%;
+			    
+			    article
+			    {
+			    	width: 100%;
+			    	
+			    	@include entry-meta;
+			    	
+			    	&.has-post-thumbnail
+			    	{
+			    		.category-links
+			    		{
+			    			@include media('<=tablet') 
+			    			{
+			    				position: absolute;
+			    				left: 0;
+			    				top: 24px;
+			    				right: auto;
+			    				z-index: 2;
+			    			}
+			    		}
+			    	}
+
+			    	&:not(.has-post-thumbnail)
+			    	{
+			    		.category-links
+			    		{
+			    			@include media('<=tablet')
+			    			{
+			    				margin-bottom: 0;
+			    			}
+			    		}
+			    	}
+
+			    	&.format-video
+			    	{
+			    		.category-links
+			    		{
+			    			@include media('<=tablet')
+			    			{
+			    				position: absolute;
+			    				z-index: 2;
+			    				top: 60px;
+			    			}
+			    		}
+			    	}
+			    }
+			    
+			    // general styles for all posts including hover
+			    @import 'post-designs/common-styles';
+
+			    // general styles for all posts that are selected for default design
+			    @import 'post-designs/post_default';
+			    			    
+			    // general styles for all posts that are selected for magazine design
+			    // @import 'post-designs/post_magazine';
+			  
+			    // general styles for all posts that are selected for magazine design
+			    // @import 'post-designs/post_newspaper';
+			    
+			     // general styles for all posts that are selected for magazine design
+			    // @import 'post-designs/post_fresh';
+
+		 	}
+		}
+	}
+}
+
+@-moz-keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@-o-keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

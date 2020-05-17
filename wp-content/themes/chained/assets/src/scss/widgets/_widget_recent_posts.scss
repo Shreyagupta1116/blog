@@ -1,0 +1,52 @@
+//==============================================================================
+// widget_recent_posts
+//==============================================================================
+
+&.widget_chained_recentpost_widget
+{
+    .widget-post
+    {
+        margin-bottom: 12px;
+        
+        .post-wrap
+        {
+            display: flex;
+            
+            a
+            {
+                &.image
+                {
+                    margin-right: 24px;
+                    width: 120px;
+                    height: 80px;
+                    display: flex;
+                }
+                
+                img
+                {
+                    width: 120px;
+                    height: 80px;
+                    object-fit: cover;
+                }
+            }
+
+            .content
+            {
+                width: calc(100% - 120px - 24px);
+                
+                .title
+                {
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                }
+
+                
+                .entry-date
+                {
+                    font-size: 13px;
+                    opacity: .7;
+                }
+            }
+        }
+    }
+}

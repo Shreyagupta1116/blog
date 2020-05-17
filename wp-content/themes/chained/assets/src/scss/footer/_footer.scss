@@ -1,0 +1,138 @@
+/*  -----------------------------------------------------------------------------------------------
+  Site Footer
+  @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+  
+.site-footer
+{
+	padding: 32px 0 24px;
+    justify-content: space-between;
+    font-size: 14px;
+    border-top: 1px solid $grey;
+    text-align: center;
+    color: $black;
+    
+    .wrapper
+    {
+        @include media('<=tablet')
+        {
+            padding: 0 48px;
+        }
+    }
+
+    .infinite-scroll.neverending &
+    {
+      display: none;
+    }
+
+    .infinity-end.neverending, .neverending.no-posts &
+    {
+        display: flex;
+    }
+
+    .infinity-end.neverending.infinity-end &
+    {
+        display: flex;
+    }
+    
+    a
+    {
+    	opacity: .75;
+        
+        &:hover
+        {
+            color: $accent_color;
+        }
+    }
+
+    .site-info
+    {
+       font-size: 12px;
+    }
+
+   	.nav--footer
+   	{
+   		display: flex;
+        justify-content: center;
+   		margin: 0 0 24px;
+   		padding: 0;
+   		list-style-type: none;
+        
+        @include media('<=tablet')
+        {
+            flex-direction: column;
+            align-items: center;
+        }
+   	
+   		li
+   		{
+   			position: relative;
+   			margin-right: 32px;
+			@extend .flex-item;
+            
+            @include media('<=tablet')
+            {
+                 margin-right: 0;
+                 margin-bottom: 12px;
+            }
+            
+            a
+            {
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: bold;
+                
+                &:hover
+                {
+                    color: $accent_color;
+                }
+            }
+
+   			&:last-child
+   			{
+   				margin-right: 0;
+   				padding-right: 0;
+                
+                @include media('<=tablet')
+                {
+                    margin-bottom: 0;
+                }
+   			}
+
+   		}
+   	}
+
+   	.back-to-top
+   	{
+   		display: inline-block;
+   		background-color: transparent;
+		width: 32px;
+		height: 32px;
+   		text-align: center;
+   		border-radius: 4px;
+   		position: fixed;
+   		bottom: 50px;
+   		right: 30px;
+   		transition: background-color .3s, 
+   		  opacity .5s, visibility .5s;
+   		opacity: 0;
+   		visibility: hidden;
+   		z-index: 1000;
+        
+        @include media('<=tablet')
+        {
+            right: 12px;
+        }
+   		
+   		&.show
+   		{
+   			opacity: 1;
+   			visibility: visible;
+   		}
+
+   		svg
+   		{
+   			fill: $accent_color;
+   		}
+   	}
+}

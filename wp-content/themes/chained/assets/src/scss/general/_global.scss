@@ -1,0 +1,234 @@
+/*  -----------------------------------------------------------------------------------------------
+    Globas
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+html 
+{
+  box-sizing: border-box;
+}
+
+*, *:before, *:after 
+{
+  box-sizing: inherit;
+}
+
+body
+{
+	font-size: $body_font_size;
+	line-height: 1.5;
+	font-family: $body_font;
+	transition: left .25s;
+	@extend .black;
+	
+	.body__before
+	{
+		opacity: 0;
+		transition: opacity .55s;
+	}
+	
+	&.body-offcanvas-opened
+	{
+		overflow-y: hidden;
+		left: 15px;
+				
+		.body__before
+		{
+			position: fixed;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    content: "";
+		    display: block;
+		    z-index: 3;
+		    opacity: 1;
+		    background: rgba($black, .6);
+		    transition: all .25s;
+		}
+	}
+}
+
+::selection 
+{
+    @extend .bgaccent;
+    @extend .white;
+}
+
+a
+{
+	text-decoration: none;
+	@extend .black;
+	transition: color .25s;
+	
+	&:hover,
+	&:focus
+	{
+		@extend .accent;
+	}
+}
+
+h1,h2,h3,h4,h5,h6
+{
+	font-family: $headings_font;
+}
+
+@import 'headings';
+
+img
+{
+	max-width: 100%;
+	height: auto;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text 
+{
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus 
+{
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus 
+{
+	outline: 0;
+}
+
+.site
+{
+	margin-bottom: 24px;
+}
+
+#site-content
+{
+	@include elements_padding_on_sides();
+	
+	.home &
+	{
+		@include media('<=ads')
+		{
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+button
+{
+	@include button;
+	
+	&.reset
+	{
+		background: none;
+		border: none;
+		padding: 0;
+	}
+}
+
+blockquote
+{
+	margin: 0;
+	font-weight: 500;
+    font-style: italic;
+	
+	cite
+	{
+		display: block;
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: right;
+		text-transform: uppercase;
+		font-weight: 200;
+		font-size: 14px;
+		
+		&:before
+		{
+			content: "";
+			display: inline-block;
+			vertical-align: middle;
+			width: 32px;
+			height: 2px;
+			@extend .bgaccent;
+			margin-right: 24px;
+		}
+	}
+}
+
+
+select
+{
+	width: 100%;
+	padding: 12px;
+	font-size: 14px;
+}
+
+audio
+{
+	height: 34px;
+	width: 100%;
+}
+
+audio::-webkit-media-controls-panel
+{
+	background: $white;
+	border-radius: 0;
+}
+
+input:not([type=checkbox]),
+textarea
+{
+	border:1px solid $grey;
+	padding: 12px;
+	width: 100%;
+}
+
+textarea
+{
+	min-height: 170px;
+}
+
+input[type=submit]
+{
+	background: $black;
+	color: $white;
+	letter-spacing: 2.5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all .25s;
+	
+	&:hover,
+	&:focus
+	{
+		background: $accent_color;
+	}
+}

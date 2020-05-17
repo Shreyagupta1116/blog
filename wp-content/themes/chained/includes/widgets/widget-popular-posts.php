@@ -1,0 +1,293 @@
+<?php
+/*-----------------------------------------------------------------------------------------------
+    Widget Popular Posts
+    @package v1.0.2
+------------------------------------------------------------------------------------------------- */
+/**
+ * Popular Posts widget based on the Jetpack Stats
+ * See: http://jetpack.me/
+ *
+ * @package Chained
+ */
+
+/*
+ * Currently, this widget depends on the Stats Module. To not load this file
+ * when the Stats Module is not active would potentially bypass Jetpack's
+ * fatal error detection on module activation, so we always load this file.
+ * Instead, we don't register the widget if the Stats Module isn't active.
+ */
+
+if ( ! function_exists('chained_popular_posts_widget_init') ) :
+    /**
+     * Register our Popular Posts widget for use in Appearance -> Widgets
+     */
+    add_action( 'widgets_init', 'chained_popular_posts_widget_init' );
+
+    function chained_popular_posts_widget_init() {
+        // Currently, this widget depends on the Stats Module
+        if ( !function_exists( 'stats_get_csv' ) ) {
+            return;
+        }
+
+        register_widget( 'Chained_Popular_Posts_Widget' );
+    }
+endif;
+
+if ( ! class_exists('Chained_Popular_Posts_Widget') ) :
+
+    class Chained_Popular_Posts_Widget extends WP_Widget {
+
+        var $alt_option_name = 'widget_chained_popularposts';
+        var $default_title = '';
+
+        function __construct() {
+            parent::__construct(
+                'chained-popular-posts',
+                apply_filters( 'chained_widget_name', esc_html__( 'Chained Popular Posts', 'chained' ) ),
+                array(
+                    'description' => esc_html__( 'Shows your most viewed posts in an elegant way!', 'chained' ),
+                )
+            );
+
+            $this->default_title = esc_html__( 'Chained Popular Posts', 'chained' );
+        }
+
+        function form( $instance ) {
+            $title = isset( $instance['title'] ) ? $instance['title'] : false;
+            if ( false === $title ) {
+                $title = $this->default_title;
+            }
+
+            $count = isset( $instance['count'] ) ? (int) $instance['count'] : 5;
+            if ( $count < 1 || 10 < $count ) {
+                $count = 10;
+            }
+
+            ?>
+
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'chained' ); ?></label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_html_e( 'Maximum number of posts to show (no more than 10):', 'chained' ); ?></label>
+            <input id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="number" value="<?php echo esc_attr( (int) $count ); ?>" min="1" max="10" />
+        </p>
+
+        <p><?php esc_html_e( 'Popular Posts by views are calculated from 24-48 hours of stats. They take a while to change.', 'chained' ); ?></p>
+
+        <?php
+        }
+
+        function update( $new_instance, $old_instance ) {
+            $instance = array();
+            $instance['title'] = wp_kses( $new_instance['title'], array() );
+            if ( $instance['title'] === $this->default_title ) {
+                $instance['title'] = false; // Store as false in case of language change
+            }
+
+            $instance['count'] = (int) $new_instance['count'];
+            if ( $instance['count'] < 1 || 10 < $instance['count'] ) {
+                $instance['count'] = 10;
+            }
+
+            return $instance;
+        }
+
+        function widget( $args, $instance ) {
+            $title = isset( $instance['title'] ) ? $instance['title'] : false;
+            if ( false === $title ) {
+                $title = $this->default_title;
+            }
+            $title = apply_filters( 'widget_title', $title );
+
+            $count = isset( $instance['count'] ) ? (int) $instance['count'] : 5;
+            if ( $count < 1 || 10 < $count ) {
+                $count = 10;
+            }
+            $count = apply_filters( 'chained_popular_posts_widget_count', $count );
+
+            $get_image_options = array(
+                'fallback_to_avatars' => false,
+                'thumbnail_size' => 285,
+            );
+
+            $get_image_options = apply_filters( 'chained_popular_posts_widget_image_options', $get_image_options );
+
+            $posts = $this->get_by_views( $count );
+
+            if ( ! $posts ) {
+                $posts = $this->get_fallback_posts();
+            }
+
+            echo wp_kses_post($args['before_widget']);
+            if ( ! empty( $title ) ) {
+                echo wp_kses_post($args['before_title']) . wp_kses_post($title) . wp_kses_post($args['after_title']);
+            }
+
+            if ( ! $posts ) {
+                if ( current_user_can( 'edit_theme_options' ) ) {
+                    echo '<p>' . sprintf(
+                        /* translators: No posts to display */
+                        esc_html__( 'There are no posts to display. <a href="%s">Want more traffic?</a>', 'chained' ),
+                        'http://en.support.wordpress.com/getting-more-site-traffic/'
+                    ) . '</p>';
+                }
+
+                echo wp_kses_post($args['after_widget']);
+                return;
+            }
+
+            //the first post has a nice image unlike the rest
+            $post = array_shift( $posts );
+            $image = Jetpack_PostImages::get_image( $post['post_id'], array( 'fallback_to_avatars' => true ) );
+            $post['image'] = $image['src'];
+            if ( 'blavatar' != $image['from'] && 'gravatar' != $image['from'] ) {
+                $size = (int) $get_image_options['thumbnail_size'];
+                $post['image'] = jetpack_photon_url( $post['image'], array( 'resize' => "$size" ) );
+            }
+            echo '<ol>';
+            ?>
+            <li class='popular-posts_item large-thumbnail'>
+                <?php do_action( 'chained_widget_popular_posts_before_post', $post['post_id'] ); ?>
+                <a href="<?php echo esc_url( $post['permalink'] ); ?>" title="<?php echo esc_attr( wp_kses( $post['title'], array() ) ); ?>" class="image">
+                    <img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( wp_kses( $post['title'], array() ) ); ?>" />
+                </a>
+                <div class="content">
+                    <?php
+                        $cats_list = chained_get_cats_list( $post['post_id'] );
+
+                        if ( ! empty( $cats_list ) ) {
+                            echo '<div class="categories-list">' . wp_kses_post($cats_list) . '</div>';
+                        }
+                    ?>
+                    <h5 class="title">
+                        <a href="<?php echo esc_url( $post['permalink'] ); ?>">
+                            <?php echo esc_html( wp_kses( $post['title'], array() ) ); ?>
+                        </a>
+                    </h5>
+                </div>
+                <?php do_action( 'chained_widget_popular_posts_after_post', $post['post_id'] ); ?>
+            </li>
+            <?php
+
+            // the rest of the posts are just text
+            foreach ( $posts as $post ) :
+                ?>
+                <li class='popular-posts_item'>
+                    <?php do_action( 'chained_widget_popular_posts_before_post', $post['post_id'] ); ?>
+                   <h6 class="title">
+                       <a href="<?php echo esc_url( $post['permalink'] ); ?>">
+                           <?php echo esc_html( wp_kses( $post['title'], array() ) ); ?>
+                       </a>
+                   </h6>
+                    <?php
+                    $cats_list = chained_get_cats_list( $post['post_id'] );
+
+                    if ( ! empty( $cats_list ) ) {
+                        echo '<div class="categories-list">' . wp_kses_post($cats_list) . '</div>';
+                    }
+                    ?>
+                    <?php do_action( 'chained_widget_popular_posts_after_post', $post['post_id'] ); ?>
+                </li>
+            <?php
+            endforeach;
+            echo '</ol>';
+
+            echo wp_kses_post($args['after_widget']);
+        }
+
+        function get_by_views( $count ) {
+            $days = (int) apply_filters( 'chained_jetpack_top_posts_days', 2 );
+
+            if ( $days < 1 ) {
+                $days = 2;
+            }
+
+            if ( $days > 10 ) {
+                $days = 10;
+            }
+
+            $post_view_posts = stats_get_csv( 'postviews', array( 'days' => absint( $days ), 'limit' => 11 ) );
+            if ( ! $post_view_posts ) {
+                return array();
+            }
+
+            $post_view_ids = array_filter( wp_list_pluck( $post_view_posts, 'post_id' ) );
+            if ( ! $post_view_ids ) {
+                return array();
+            }
+
+            return $this->get_posts( $post_view_ids, $count );
+        }
+
+        function get_fallback_posts() {
+            if ( current_user_can( 'edit_theme_options' ) ) {
+                return array();
+            }
+
+            $post_query = new WP_Query;
+
+            $posts = $post_query->query( array(
+                'posts_per_page' => 1,
+                'post_status' => 'publish',
+                'post_type' => array( 'post' ),
+                'no_found_rows' => true,
+            ) );
+
+            if ( ! $posts ) {
+                return array();
+            }
+
+            $post = array_pop( $posts );
+
+            return $this->get_posts( $post->ID, 1 );
+        }
+
+        function get_posts( $post_ids, $count ) {
+            $counter = 0;
+
+            $posts = array();
+            foreach ( (array) $post_ids as $post_id ) {
+                $post = get_post( $post_id );
+
+                if ( ! $post ) {
+                    continue;
+                }
+
+                // Only posts, no attachments or pages
+                if ( 'attachment' == $post->post_type || 'page' == $post->post_type ) {
+                    continue;
+                }
+
+                // hide private and password protected posts
+                if ( 'publish' != $post->post_status || ! empty( $post->post_password ) || empty( $post->ID ) ) {
+                    continue;
+                }
+
+                // Both get HTML stripped etc on display
+                if ( empty( $post->post_title ) ) {
+                    $title_source = $post->post_content;
+                    $title = wp_html_excerpt( $title_source, 50 );
+                    $title .= '&hellip;';
+                } else {
+                    $title = $post->post_title;
+                }
+
+                $permalink = get_permalink( $post->ID );
+
+                $posts[] = compact( 'title', 'permalink', 'post_id' );
+                $counter++;
+
+                if ( $counter == $count ) {
+                    break; // only need to load and show x number of posts
+                }
+            }
+
+            return apply_filters( 'chained_widget_get_popular_posts', $posts, $post_ids, $count );
+        }
+
+    } //Class chained Popular Posts Widget
+
+endif; ?>

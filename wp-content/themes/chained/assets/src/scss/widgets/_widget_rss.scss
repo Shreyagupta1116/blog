@@ -1,0 +1,49 @@
+//==============================================================================
+// widget_rss
+//==============================================================================
+
+&.widget_rss
+{
+
+    li
+    {
+        .rsswidget 
+        {
+            font-size: 14px;
+        }
+
+        .rss-date 
+        {
+            display: block;
+            padding: 0 0 12px 0;
+            color: $grey;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .rssSummary 
+        {
+            font-size: 14px;
+        }
+
+        cite 
+        {
+            text-transform: uppercase;
+            font-style: normal;
+            font-weight: bold;
+            display: inline-block;
+            padding: 12px 0 12px 20px;
+            position: relative;
+            letter-spacing: .1em;
+            color: $black;
+
+            &:before
+            {
+                content: "—";
+                position: absolute;
+                left: 0;
+                top: 0.7em;
+            }
+        }
+    }
+}   

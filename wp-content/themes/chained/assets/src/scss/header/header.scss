@@ -1,0 +1,88 @@
+/*  -----------------------------------------------------------------------------------------------
+    Site Header
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.site-header
+{
+	@import 'navigation';
+	@import 'logo';
+	@import 'social';
+	
+	background: $white;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 24px;
+	border-bottom: 	1px solid $grey;
+	transition: all .25s;
+	
+	@import 'headers/header_style_1';
+	
+	.single &,
+	.page &
+	{
+		margin-bottom: 0;	
+	}
+
+	&.fixed
+	{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 3;
+		
+		.admin-bar &
+		{
+			top: 32px;
+		}
+		
+		.hide-sticky &
+		{
+			position: relative;
+		}
+		
+		.main-navigation
+		{
+			.nav--main
+			{
+				li
+				{
+					a
+					{
+						padding: 12px 0;
+					}
+				}
+			}
+		}
+	}
+	
+	.wrapper
+	{
+		@extend .flex-item;
+	}
+
+	#offcanvas-navigation-open
+	{
+		display: flex;
+	
+		@include media('<=tablet')
+		{
+			flex: initial;
+			width: 24px;
+		}
+		
+		a
+		{
+			display: flex;
+		}
+
+		svg
+		{
+			width: 24px;
+			height: 24px;
+		}
+	}
+}
+

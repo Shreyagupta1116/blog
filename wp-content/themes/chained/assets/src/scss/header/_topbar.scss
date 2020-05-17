@@ -1,0 +1,82 @@
+/*  -----------------------------------------------------------------------------------------------
+    Topbar
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.topbar
+{
+	background: $accent_color;
+	color: $white;
+	padding: 7px 0;
+	font-size: 14px;
+	transition: all .25s;
+	border-bottom: 1px solid $grey;
+	@include elements_padding_on_sides;
+	
+	@include media('<=tablet')
+	{
+		display: none;
+	}
+	
+	.wrapper
+	{
+		@extend .flex-item;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+		    
+		.topbar-right
+		{
+			display: flex;
+		}
+
+		ul 
+		{
+			@extend .flex-item;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			
+			li
+			{
+				margin-right: 12px;
+				
+				&:last-child
+				{
+					margin-right: 0;
+				}
+			}
+		}
+
+	    a
+	    {
+	    	@extend .flex-item;
+	    	color: $white;
+	    	
+	    	.screen-reader-texts
+	    	{
+	    		display: none;
+	    	}
+
+	    	&:hover,
+	    	&:focus
+	    	{
+	    		color: $black;
+	    	}
+
+	    	svg
+	    	{
+	    		width: 18px;
+	    		height: 18px;
+	    		fill: $white;
+	    	}
+	    }
+
+	    .topbar-date
+	    {
+	    	@extend .flex-item;
+	    	text-transform: uppercase;
+	    	color: $white;
+	    	margin-left: 24px;
+	    }
+	}
+}

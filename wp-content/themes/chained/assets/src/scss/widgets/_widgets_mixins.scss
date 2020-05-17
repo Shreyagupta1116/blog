@@ -1,0 +1,146 @@
+/*  -----------------------------------------------------------------------------------------------
+    Widgets Mixins
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+
+@mixin widget() 
+{
+    margin-bottom: 24px;
+    width: 100%;
+    
+    &:first-child
+    {
+        h4
+        {
+            &.widget-title
+            {
+                margin-top: 0;
+            }
+        }
+    }
+
+    a
+    {
+        color: $black;
+        
+        &:hover,
+        &:focus
+        {
+            color: $accent_color;
+        }
+    }
+   
+    h4
+    {
+        &.widget-title
+        {
+            font-size: 18px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: $black;
+            position: relative;
+            @extend .flex-item;
+            
+            &:empty
+            {
+                display: none;
+            }
+         
+            &:before
+            {
+                content: "";
+                width: 5px;
+                height: 5px;
+                display: inline-block;
+                background: $accent_color;
+                margin-right: 12px;
+            }
+
+            a 
+            {
+                img 
+                {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    ul 
+    {
+        list-style: none;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+
+        &.children 
+        {
+            margin: 12px 0 0 24px;
+        }
+
+        li 
+        {
+            border-bottom: 1px solid $grey; 
+            padding: 8px 0 12px;
+            
+            &:first-child
+            {
+               padding: 0 0 12px;
+            }
+
+            &:last-child 
+            {
+                margin-bottom: 0;
+                border-bottom: none;
+                 
+            }
+
+            span.count,
+            span.post_count
+            {
+                transition: all .3s ease;
+                float: right;
+            }
+
+        }
+    }
+}
+
+
+
+@mixin widget_tags() 
+{
+    a 
+    {
+        padding: 5px 0;
+        margin: 0 1px 10px 0 ;
+        display: inline-block;
+        font-size: 14px !important;
+        text-transform: capitalize;
+        line-height: 10px;
+        font-family: $headings_font; 
+        
+        &:hover,
+        &:focus
+        {
+            color: $accent_color; 
+        }
+
+        &:after
+        {
+            content: "—";
+            display: inline-block;
+            margin-left: 3px;
+        }
+    }
+}
+
+
+@mixin widget_dropdown() 
+{
+    .screen-reader-text 
+    {
+        display: none;
+    }
+}

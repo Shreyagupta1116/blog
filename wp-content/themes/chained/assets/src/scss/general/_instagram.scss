@@ -1,0 +1,126 @@
+/*  -----------------------------------------------------------------------------------------------
+    Instagram
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.block-instagram
+{
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    
+    #sbi_mod_error
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    #sb_instagram 
+    {
+       position: relative;
+       padding-bottom: 0 !important;
+       
+        #sbi_images
+        {
+            padding: 0 !important;
+            
+            .sbi_item
+            {
+                padding: 0 !important;
+                
+                .sbi_photo_wrap 
+                {
+                    &:hover,
+                    &:focus
+                    {
+                       .sbi_photo
+                       {
+                           &:after
+                           {
+                               opacity: 1;
+                               z-index: 1;
+                               visibility: visible;
+                               height: 100%;
+                           }
+                       }
+                    }
+                    .sbi_photo
+                    {
+                        &:after
+                        {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 0;
+                            background: rgba($black, .4);
+                            opacity: 0;
+                            visibility: hidden;
+                            z-index: -1;
+                            transition: all .25s;
+                        }
+                    }
+                }
+            }
+        }
+
+        #sbi_load
+        {
+            display: flex;
+            justify-content: space-between;
+            
+            .widget-area &
+            {
+                flex-direction: column;
+            }
+                
+            .sbi_load_btn
+            {
+                background: $black;
+                border-radius: 0;
+                padding: 12px 24px;
+                font-weight: bold;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                margin-left: 0;
+                
+                .widget-area &
+                {
+                    margin-left: auto;
+                }
+                
+                &:hover,
+                &:focus
+                {
+                   background-color: $accent_color;
+                   box-shadow: none;
+                }
+            }
+
+            .sbi_follow_btn
+            {
+                a
+                {
+                    background: $black;
+                    border-radius: 0;
+                    padding: 12px 24px;
+                    font-weight: bold;
+                    letter-spacing: 2.5px;
+                    text-transform: uppercase;
+                    
+                    &:hover,
+                    &:focus
+                    {
+                        background-color: $accent_color;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}

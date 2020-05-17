@@ -1,0 +1,77 @@
+/*  -----------------------------------------------------------------------------------------------
+    Logo
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.site-branding
+{
+	text-align: center;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	
+	@include media('<=tablet')
+	{
+		width: auto;
+		text-align: center;
+	}
+
+	.site-title
+	{
+		font-size: 18px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		line-height: 1.1;
+		margin: 12px 0 0;
+		font-weight: bold;
+		
+		@include media('<=tablet')
+		{
+			font-size: 12px;
+		}
+		
+		& + .site-description
+		{
+			margin-bottom: 12px;
+		}
+	}
+
+	.site-description
+	{
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		line-height: 1;
+		margin: 12px 0 5px;
+		font-weight: bold;
+		opacity: .75;
+		
+		@include media('<=tablet')
+		{
+			font-size: 10px;
+		}
+	}
+
+	.custom-logo
+	{
+		@include media('<=tablet')
+		{
+			margin: 0 auto; 
+		}
+	}
+
+	.custom-logo-link
+	{
+		margin: 5px 0 0;
+		display: flex;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		
+		.custom-logo
+		{
+		    width: 200px;
+		    height: auto;
+		    transition: all .25s;
+		}
+	}
+}

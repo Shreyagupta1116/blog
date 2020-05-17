@@ -1,0 +1,28 @@
+/*  -----------------------------------------------------------------------------------------------
+    Page
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.page
+{
+	.entry-title
+	{
+		line-height: 1.1;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+		margin: 0 0 14px;
+	}
+
+	.entry-featured
+	{
+		img
+		{
+			width: 100%;
+		}
+	}
+
+	.breadcrumbs
+	{
+		margin-bottom: 12px;
+	}
+}

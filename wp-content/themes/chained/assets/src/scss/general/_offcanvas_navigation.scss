@@ -1,0 +1,201 @@
+/*  -----------------------------------------------------------------------------------------------
+    Offcanvas Navigation & Widgets
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.offcanvas-navigation
+{	
+	position: fixed;
+	top: 0; 
+	left: 0;
+	transform: translateX(-100%);
+	z-index: 10;
+	width: 320px;
+	height: 100%;
+	background: $white;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .25s ease-in-out;
+	box-shadow: 0 0 3px rgba($black, 0.15);
+	
+	@include media('<tablet')
+	{
+		width: 85%;
+	}
+	
+	&.is-visible
+	{
+		padding: 24px;
+		opacity: 1;
+		visibility: visible;
+		z-index: 4;
+		transform: translateX(0);
+	}
+
+	.offcanvas-content
+	{
+		margin: 64px auto 0;
+		display: flex;
+		flex-direction: column;
+
+		#offcanvas-navigation-close
+		{
+			position: absolute;
+			right: 24px;
+			top: 24px;
+			
+			svg
+			{
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		.offcanvas-navigation-wrapper
+		{
+			position: relative;
+			width: 100%;
+			margin-bottom: 24px;
+			
+			.nav--main
+			{
+				@extend .inline-list;
+				margin-bottom: 24px;
+				
+				li
+				{
+					&.menu-item
+					{
+						&:not(:last-child)
+						{
+							margin-bottom: 16px;
+						}
+
+						a
+						{
+							font-size: 18px;
+							text-transform: uppercase;
+							@extend .flex-item;
+							-webkit-justify-content: space-between;
+							        justify-content: space-between;
+							
+						}
+
+						ul
+						{
+							list-style-type: none;
+							padding: 16px 16px 0;
+						}
+
+					}
+
+
+					&.menu-item-has-children
+					{
+						.has-submenu
+						{
+							@extend .flex-item;
+							-webkit-justify-content: space-between;
+							        justify-content: space-between;
+							
+							svg
+							{
+								width: 18px;
+								height: 18px;
+								display: flex;
+							}
+
+							&.open
+							{
+								.minus
+								{
+									display: block;
+								}
+
+								.plus
+								{
+									display: none;
+								}
+							}
+
+							.minus
+							{
+								display: none;
+							}
+						}
+						
+						.sub-menu
+						{
+							display: none;
+						}
+					}
+				}
+			}
+
+			.nav--social
+			{
+				@extend .flex-item;
+				@extend .inline-list;
+				flex-wrap: wrap;
+				
+				li
+				{
+					margin-right: 16px;
+					
+					&.menu-item-search
+					{
+						display: none;
+					}
+
+					a
+					{
+						.screen-reader-texts
+						{
+							display: none;
+						}
+
+						svg
+						{
+							fill: $black;
+							width: 18px;
+							height: 18px;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+	
+	.admin-bar & 
+	{
+		top: 32px;
+		
+		@include media('<=tablet')
+		{
+			top: 46px; 
+		} 
+	}
+
+	.widget-area 
+	{
+		.widget.widget_media_gallery 
+		{
+			.gallery 
+			{
+				.gallery-item 
+				{
+					a 
+					{
+						img
+						{
+							min-height: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

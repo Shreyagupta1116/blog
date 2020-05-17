@@ -1,0 +1,108 @@
+/*  -----------------------------------------------------------------------------------------------
+    Header Style 1
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.header-style-1
+{
+	@include elements_padding_on_sides;
+
+	.wrapper
+	{
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+	    
+	    @include media('<=tablet')
+	    {
+	    	-webkit-justify-content: center;
+	    	        justify-content: center;
+	    }
+
+	    .header-left
+	    {
+	    	@extend .flex-item;
+	    	margin-right: 24px;
+	    	flex: 1;
+	    	
+	    	@include media('<=tablet')
+	    	{
+	    		flex: initial;
+	    	}
+
+	    	.site-search-button-disabled &
+	    	{
+	    		@include media('<=tablet')
+	    		{
+	    			margin-right: 0;
+	    		}
+	    	}
+
+	    	.site-search-button-disabled &
+	    	{
+	    		@include media('<=tablet')
+	    		{
+	    			margin-right: 0;
+	    			display: flex;
+	    			justify-content: center;
+	    		}
+
+	    		.site-offcanvas-opener
+	    		{
+	    			
+	    		}
+	    	}
+	    	
+	    	.site-offcanvas-opener
+	    	{
+	    		margin-right: 24px;
+	    		
+	    		.site-offcanvas-button-disabled &
+	    		{
+	    			@include media('>=semi-huge')
+	    			{
+	    				display: none;
+	    			}
+	    		}
+	    		
+	    		@include media('<=semi-huge')
+	    		{
+	    			margin-right: 0;
+	    		}
+	    	}
+
+	    	.main-navigation
+	    	{
+	    		margin-right: 24px;
+	    		
+	    		@include media('<=semi-huge')
+	    		{
+	    			display: none;
+	    		}
+	    	}
+	    }
+
+	    .site-branding
+	    {
+	    	@include media('<=semi-huge')
+	    	{
+	    		flex: 1;
+	    	}
+	    }
+
+	    .social-navigation
+	    {
+	    	@include media('<=tablet')
+	    	{
+	    		flex: initial;
+	    	}
+
+	    	.nav--social
+	    	{
+	    		@include media('<=desktop')
+	    		{
+	    			display: none;
+	    		}
+	    	}
+	    }
+	}
+}

@@ -1,0 +1,44 @@
+/*  -----------------------------------------------------------------------------------------------
+    Single Entry Footer (tags)
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.entry-footer
+{
+	.tags-links
+	{
+		font-size: 13px;
+		font-weight: bold;
+		text-transform: uppercase;
+		display: flex;
+		flex-wrap: wrap;
+		
+		a
+		{
+			padding: 3px 15px;
+		    color: $white;
+		    letter-spacing: 2px;
+		    display: inline-block;
+		    background: $accent_color;
+		    transition: background .25s;
+		    margin-right: 3px;
+		    margin-bottom: 3px;
+		    
+		    &:before
+		    {
+		    	content: "#";
+		    }
+
+		    &:last-child
+		    {
+		    	margin-right: 0;
+		    }
+		    
+		    &:hover,
+		    &:focus
+		    {
+		    	background: $black;
+		    }
+		}
+	}
+}

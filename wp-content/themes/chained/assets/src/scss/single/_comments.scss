@@ -1,0 +1,422 @@
+/*  -----------------------------------------------------------------------------------------------
+    Comments Area
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.comments-area
+{
+	overflow: hidden;
+	border: 1px solid $grey;
+	padding: 32px 32px 16px;
+	
+	 @include media('<=tablet')
+	 {
+	 	padding: 12px 12px 0;
+	 }
+	
+	&.no-comments
+	{
+		border: 0;
+		padding: 0;
+		overflow: initial;
+				
+		& + .comment-respond
+		{
+			.comment-reply-title
+			{
+				display: none;
+			}
+		}
+	}
+	
+	.comments-area-title
+	{
+		@extend .flex-item;
+	
+		    @include media('<=tablet')
+		    {
+		    	margin-bottom: 24px;
+		    	-webkit-justify-content: flex-start;
+		    	        justify-content: flex-start;
+		    }
+		    
+		h3
+		{
+			font-size: 18px;
+		 	position: relative;
+		 	margin-top: 0;		 	
+		 	text-transform: uppercase;
+		 	letter-spacing: 0.1em;
+		 	@extend .black;
+		 	position: relative;
+		 	@extend .flex-item;
+		 	
+		 	&:before
+		 	{
+		 		content: "";
+	 		    width: 5px;
+	 		    height: 5px;
+	 		    display: inline-block;
+	 		    @extend .bgaccent;
+	 		    margin-right: 12px;
+		 	}
+
+		 	.total
+		 	{
+		 		margin-right: 6px;
+		 	}
+		}
+		    
+		.comments_add-comment
+		{
+			@extend button;
+			color: 	$white;
+		}
+	}
+
+	.commentlist
+	{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		position: relative;
+		
+		.comment
+		{
+			list-style-type: none;
+			margin-top: 24px;
+			
+			&:first-child
+			{
+				margin-top: 0;
+			}
+			
+			.comment-article
+			{
+				@extend .flex-item;
+				align-items: flex-start;
+				
+				@include media('<=tablet')
+				{
+					flex-wrap: wrap;
+				}
+				
+				&:hover,
+				&:focus
+				{
+					.media__body
+					{
+						.comment-author
+						{
+							.comment__links
+							{
+								opacity: 1;
+							}
+						}
+					}
+				}
+				
+				.comment-number
+				{
+					position: relative;
+					background: $black;
+					color: $white;
+					font-weight: bold;
+					font-size: 12px;
+					width: 32px;
+					height: 32px;
+					@extend .flex-item;
+					-webkit-justify-content: center;
+					        justify-content: center;
+					
+					@include media('<=tablet')
+					{
+					    margin: 0 auto 12px;
+					}
+					
+					&:before
+					{
+						content: "";
+						border-bottom: 1px solid $grey;
+					    position: absolute;
+					    z-index: 1;
+					    right: 100%;
+					    top: 50%;
+					    transform: translate(0, -50%);
+					    width: 200px;
+					    height: 1px;
+					}
+
+					&:after
+					{
+						content: "";
+						border-bottom: 1px solid $grey;
+					    position: absolute;
+					    z-index: 1;
+					    left: 100%;
+					    top: 50%;
+					    transform: translate(0, -50%);
+					    width: 24px;
+					    height: 1px;
+					    
+					    @include media('<=tablet')
+					    {
+					    	width: 200px;
+					    }
+					    
+					}
+					
+				}
+
+				.media__body
+				{
+					width: 100%;
+					padding-left: 24px;
+					font-size: 16px;
+					
+					@include media('<=tablet')
+					{
+						padding-left: 0;
+						font-size: 13px;
+					}
+					
+					.comment-author
+					{
+						@extend .flex-item;
+						flex-wrap: wrap;
+						
+						.comment__avatar
+						{
+							width: 32px;
+							height: 32px;
+							margin-right: 12px;
+						}
+
+						.comment__author-name,
+						.bypostauthor
+						{
+							text-transform: uppercase;
+							font-weight: bold;
+							letter-spacing: .5px;
+							margin-right: 12px;
+						}
+
+						.comment__time
+						{
+							margin-right: 12px;
+							font-size: 12px;
+							
+							a
+							{
+								color: rgba($black, .75);
+							}
+						}
+
+						.comment__links
+						{
+							opacity: 0;
+							transition: opacity .25s;
+							text-transform: uppercase;
+							font-size: 12px;
+							letter-spacing: 2px;
+							
+							a
+							{
+								color: $accent_color;
+								font-weight: bold;
+								margin: 0 2px;
+							}
+						}
+					}
+
+					.comment__content 
+					{
+						p
+						{
+							text-align: justify;
+						}
+					}
+				}
+			}
+
+			ul.children
+			{
+				margin-top: 12px;
+				
+				@include media('<=tablet')
+				{
+					padding-left: 24px;
+				}
+			}
+		}
+	}
+}
+
+.comment-respond
+{
+	margin-bottom: 48px;
+	
+	.comment-form
+	{
+		p
+		{
+			width: calc(100% / 3);
+			display: inline-block;
+			padding-right: 24px;
+			font-size: 14px;
+			color: $black;
+			margin: 0;
+			
+			@include media('<=tablet')
+			{
+				width: 100%;
+				padding-right: 0px;
+			}
+			
+			label
+			{
+				display: none;
+			}
+
+			&.logged-in-as
+			{
+				text-transform: uppercase;
+				font-weight: bold;
+				
+				a:last-of-type
+				{
+					color: rgba($black, .5);
+				}
+			}
+
+			&.comment-form-cookies-consent
+			{
+				@extend .flex-item;
+				margin-top: 24px;
+				width: 100%;
+				
+				label
+				{
+					@extend .flex-item;
+				}
+
+				input
+				{
+					margin-right: 8px;
+				}
+			}
+
+			&.comment-form-comment
+			{
+				width: 100%;
+				padding-right: 0;
+				background: rgba($grey, 10%);
+				padding: 20px;
+				position: relative;
+				border: 1px solid $grey;
+				margin-bottom: 24px;
+				
+				&:before
+				{
+					content: "";
+					border-left: 1px solid $grey;
+					width: 2px;
+					height: 100%;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 10px;
+				}
+
+				&:after
+				{
+					content: "";
+					border-left: 1px solid $grey;
+					width: 2px;
+					height: 100%;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 13px;
+				}
+			}
+
+			&.comment-form-url
+			{
+				padding-right: 0;
+			}
+
+			&.form-submit
+			{
+				padding-right: 0;
+				margin-top: 24px;
+				margin-bottom: 0;
+				display: inline-block;
+				
+				.submit
+				{
+					@extend button;
+					color: $white;
+				}
+			}
+
+			input:not([type=checkbox]),
+			textarea
+			{
+				width: 100%;
+				border: none;
+				background: transparent;
+				border-top: 1px dotted $grey;
+				border-bottom: 1px dotted $grey;
+			}
+
+			textarea
+			{
+				padding: 12px 24px;
+			}
+
+			input:not([type=checkbox])
+			{
+				padding: 12px 0;
+			}
+		}
+	}
+
+	.comment-reply-title
+	{
+		font-size: 18px;
+	    margin-bottom: 12px;
+	    text-transform: uppercase;
+	    letter-spacing: 0.1em;
+	    color: $black;
+	    position: relative;
+		@extend .flex-item;
+		
+		> span.total
+		{
+			margin-right: 12px;
+			border: none;
+			padding: 0;
+		}
+		
+		> a
+		{
+			margin: 0 12px;
+		}
+		
+		small
+		{
+			display: flex;
+			
+			#cancel-comment-reply-link
+			{
+				text-transform: uppercase;
+				font-size: 12px;
+				letter-spacing: 2px;
+				color: $accent_color;
+				font-weight: bold;
+				letter-spacing: 2px;
+			}
+		}
+	}
+}

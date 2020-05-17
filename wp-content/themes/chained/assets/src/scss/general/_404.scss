@@ -1,0 +1,46 @@
+/*  -----------------------------------------------------------------------------------------------
+  404 Page
+  @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+  
+.error404
+{
+	#site-content
+	{
+		.wrapper
+		{
+			max-width: 800px;
+			
+			.error-404
+			{
+				padding: 128px;
+				text-align: center;
+				
+				@include media('<=tablet')
+				{
+					padding: 48px;
+				}
+				
+				.search-form
+				{
+					display: flex;
+					justify-content: center;
+					
+					input
+					{
+						padding: 12px;
+					}
+					    
+					button.screen-reader-text
+					{
+						display: block;
+						background: $accent_color;
+						@extend .bgaccent;
+						@extend .white;
+						padding: 0 12px
+					}
+				}
+			}
+		}
+	}
+}

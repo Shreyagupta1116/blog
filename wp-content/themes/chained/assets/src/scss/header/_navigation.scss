@@ -1,0 +1,179 @@
+/*  -----------------------------------------------------------------------------------------------
+    Main Navigation
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.main-navigation
+{
+	@extend .flex-item;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	flex: 1;
+	
+	ul
+	{
+		@extend .inline-list;
+		@extend .flex-item;
+	}
+	    
+	.nav--main 
+	{
+		font-size: 18px;
+		
+		li
+		{
+			a
+			{
+				&:before
+				{
+					content: "";
+					width: 0px;
+					height: 2px;
+					background: $black;
+					display: block;
+					transition: width .25s;
+					position: absolute;
+					top: 100%;
+				}
+
+				&:hover,
+				&:focus
+				{
+					&:before
+					{
+						width: 100%;
+					}
+				}
+			}
+		}
+		
+		> li
+		{
+			position: relative;
+			margin-right: 24px;
+			
+			&.current-menu-parent
+			{
+				> a
+				{
+					&:before
+					{
+						width: 100%;
+					}
+				}
+			}
+			
+			@include media('<=huge')
+			{
+				margin-right: 12px;
+			}
+			
+			&:first-child
+			{
+				> a
+				{
+					.navigation-border-disabled &
+					{
+						padding-left: 0;
+					}
+				}
+			}
+
+			&:last-child
+			{
+				margin-right: 0;
+			}
+			
+			> a
+			{
+				color: $black;
+				padding: 24px 0;
+				transition: padding .25s;
+			}
+
+		}
+
+		a 
+		{
+			position: relative;
+			display: inline-block;
+			letter-spacing: 0.06em;
+			padding-left: 2px;
+			padding-right: 2px;
+			text-transform: uppercase;
+		}
+
+		.menu-item-has-children
+		{
+			> a 
+			{
+				&:after 
+				{
+					content: "+";
+					margin-left: 0.25em;
+				}
+			}
+
+
+			> ul
+			{
+				position: absolute;
+				top: 100%;
+				left: 0;
+				display: inline-block;
+				pointer-events: none;
+				opacity: 0;
+				z-index: 100;
+				padding: 24px;
+				
+				.menu-item-has-children 
+				{
+					ul
+					{
+						top: 0; // border size
+						left: 95%;
+					}
+				}
+			}
+
+			&:hover,
+			&:focus,
+			&.focus
+			{
+				> ul 
+				{
+					animation-name: drop_down;
+					animation-duration: 0.3s;
+					animation-fill-mode: forwards;
+					animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+					pointer-events: auto;
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+
+		/*.sub-menu*/
+		ul 
+		{
+			min-width: 200px;
+			box-shadow: 0 0 3px rgba($black, 0.15);
+			
+			li
+			{
+				margin-bottom: 12px;
+				position: relative;
+				
+				&:last-child
+				{
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		ul 
+		{
+			background: $white;
+		}
+	}
+}

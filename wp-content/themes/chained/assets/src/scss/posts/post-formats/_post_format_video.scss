@@ -1,0 +1,53 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Format Video
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-video
+{
+    .entry-header
+    {
+        h1
+        {
+            font-size: 18px;
+        }
+    }
+
+	.entry-media 
+	{
+        position: relative;
+        padding-top: 56.25%; /* 16:9 */
+
+        &.entry-image
+        {
+            display: block;
+        }
+
+        iframe 
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .jetpack-video-wrapper 
+        {
+            margin-bottom: 0;
+        }
+    }
+
+    .entry-content-inner
+    {
+        @include media('<=tablet')
+        {
+            // value of negative margins for entry-media + borders (top and bottom) value in px
+            // top: (12px + 2px); 
+            top: 0;
+            // lets not disturb the video controls
+            margin-top: 0;
+        }
+    }
+}

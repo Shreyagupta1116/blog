@@ -1,0 +1,53 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Format Image
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-image
+{
+	.entry-meta
+	{
+		position: absolute;
+		top: 0;
+		z-index: 1;
+		color: $white;
+		width: 100%;
+		opacity: 0;
+		visibility: hidden;
+		text-align: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		transition: all .25s;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+		
+		svg
+		{
+			fill: $white;
+		}
+		
+		.meta-information
+		{
+			span
+			{
+				a
+				{
+					color: $white;
+				}
+			}
+		}
+	}
+
+	&:hover,
+	&:focus
+	{
+		.entry-meta
+		{
+			opacity: 1;
+			visibility: visible;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}

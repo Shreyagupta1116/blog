@@ -1,0 +1,104 @@
+/*  -----------------------------------------------------------------------------------------------
+    Loop Pagination
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+#infinite-handle,
+.infinite-loader
+{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    margin-top: 24px; // exact value of the gutter down and between masonry elements
+    
+    // @include media('<=tablet')
+    // {
+    // 	width: 100%;
+    // }
+    
+    span
+    {
+    	background: transparent;
+    	
+    	button
+    	{
+    		@include button;
+    	}
+    }
+}
+
+#infinite-handle
+{
+	span
+	{
+		display: flex;
+		
+		button,
+		button:hover,
+		button:focus
+		{
+			padding: inherit;
+			font-size: 16px;
+			font-weight: bold;
+		}
+	}
+}
+
+.infinite-loader 
+{
+	color: $accent_color;
+	@include loader;
+}
+
+
+.pagination
+{
+	display: flex;
+	-webkit-justify-content: center;
+	        justify-content: center;
+		
+	.infinite-scroll &
+	{
+		display: none;
+	}
+	
+	.nav-links
+	{
+		text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 2.5px;
+	    font-size: 12px;
+	    
+    	.disabled
+		{
+			opacity: .55;
+		}
+		    
+		.prev
+		{
+			margin-right: 24px;
+		}
+
+		.current
+		{
+			margin-right: 24px;
+			font-weight: bold;
+			border-bottom: 2px solid $accent_color;
+		}
+
+		a
+		{
+			margin-right: 24px
+		}
+
+		.next
+		{
+			margin-right: 0;
+		}
+	}
+}

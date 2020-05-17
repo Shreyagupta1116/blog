@@ -1,0 +1,67 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Format Link
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-link
+{
+	.entry-header
+	{
+		@extend .flex-item;
+		
+		.link-icon
+		{
+			transition: all .25s;
+			
+			svg
+			{
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+
+	svg
+	{
+		width: 24px;
+		height: 24px;
+		margin-left: 8px;
+	}
+
+	.entry-image
+	{
+		display: flex;
+		
+		.link-icon
+		{
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 50%;
+			transform: translate(0, -50%);
+			display: flex;
+			opacity: 0;
+			visibility: hidden;
+			transition: all .25s;
+			pointer-events: none;
+			
+			svg
+			{
+				fill: $white;
+			}
+		}
+
+		&:hover,
+		&:focus
+		{
+			.link-icon
+			{	
+				opacity: 1;
+				visibility: visible;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				pointer-events: all;
+			}
+		}
+	}
+}

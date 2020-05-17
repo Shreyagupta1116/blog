@@ -1,0 +1,131 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Format Quote
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-quote
+{
+	margin-left: 0;
+	-webkit-font-smoothing: antialiased;
+	background-color: black;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	
+    @include media('<=tablet')
+    {
+    	padding-left: 24px;
+    	padding-right: 24px;
+    	padding-top: 24px;
+    	padding-bottom: 24px;
+    }
+
+    &:hover,
+    &:focus
+    {
+    	.entry-image
+    	{
+    		.hover
+    		{
+    			top: 90% !important;
+    			transform: translate(-50%, 0);
+    		}
+    	}
+    }
+
+
+    .entry-image
+	{
+		&:after
+		{
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba($black, .6);
+			transition: all .25s;
+			opacity: 1;
+			visibility: visible;
+			z-index: 2;
+		}
+	}
+    
+	.content-quote
+	{
+		color: $white;
+		text-transform: uppercase;
+		padding: 32px;
+		position: absolute;
+		top: 50%;
+		z-index: 3;
+		transform: translate(0, -50%);
+		
+		.content-quote-wrapper
+		{
+			position: relative;
+			z-index: 1;
+			
+			.quote
+			{
+				svg
+				{
+					width: 32px;
+					height: 32px;
+					fill: $accent_color;
+				}
+			}
+		}
+		
+		.wp-block-quote
+		{
+			cite
+			{
+				font-weight: lighter;
+				font-size: 18px;
+			}
+		}
+	}
+
+	@include entry-meta($accent_color, $white, $white);
+	
+	.entry-meta
+	{
+		position: relative;
+		z-index: 1;
+		padding: 5px 0;
+		-webkit-justify-content: center;
+		        justify-content: center;
+	}
+
+	.entry-footer
+	{
+	    .edit-link
+	    {
+	        position: absolute;
+	        bottom: 0;
+	        left: 24px;
+	        z-index: 3;
+	        
+	        .post-edit-link
+	        {
+	            color: $white;
+	            
+	            &:before
+	            {
+	            	background-color: $white;
+	            }
+	        }
+	    }
+
+	    .stick-post
+	    {
+	    	z-index: 3;
+	    }
+	}
+
+}

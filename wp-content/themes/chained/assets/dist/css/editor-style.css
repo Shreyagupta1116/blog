@@ -1,0 +1,14 @@
+/*  -----------------------------------------------------------------------------------------------
+    Editor Style - It compiles in assets/dist/css/editor-style.css
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+body.wp-editor {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Roboto Condensed", sans-serif;
+  border: none;
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: auto !important;
+}

@@ -1,0 +1,174 @@
+/*  -----------------------------------------------------------------------------------------------
+    Single Main
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.single-content
+{
+	&.boxed
+	{
+		.wrapper
+		{
+			max-width: 1200px !important;
+		}
+	}
+
+	.single-content-wrapper
+	{
+		display: grid;
+		grid-template-areas: "article sidebar";
+		grid-template-columns: 1fr 25%;
+		grid-column-gap: 64px;
+		
+		@include media('<=hd')
+		{
+			grid-column-gap: 48px;
+		}
+
+		@include media('<=huge')
+		{
+			grid-column-gap: 32px;
+		}
+
+		@include media('<=desktop')
+		{
+			grid-template-areas: 
+			"article"
+			"sidebar";
+			grid-template-columns: 100%;
+			grid-column-gap: 0;
+		}
+
+		&.no-sidebar
+		{
+			grid-template-areas: "article";
+			grid-template-columns: 1fr;
+			
+			.single-content-inner
+			{
+				padding: 24px 0 0 0;
+				border-right: 0;
+				
+				.post
+				{
+					.entry-header
+					{
+						.entry-meta
+						{
+							-webkit-justify-content: center;
+							        justify-content: center;
+						}
+
+						.entry-title
+						{
+							text-align: center;
+						}
+
+						.entry-posted-on
+						{
+							-webkit-justify-content: center;
+							        justify-content: center;
+						}
+					}
+
+					.entry-content
+					{
+						h1,h2,h3,h4,h5,h6
+						{
+							text-align: center;
+						}
+					}
+
+				}
+				
+			}
+		}
+		
+		.single-content-inner
+		{
+			grid-area: article;
+			@import 'single_author_info';
+			@import 'comments';
+			@import 'related_posts';
+			overflow: hidden;
+			
+			border-right: 1px solid $grey;
+			padding: 24px 64px 0 0;
+			
+			@include media('<=hd')
+			{
+				padding: 24px 48px 0 0;
+			}
+
+			@include media('<=huge')
+			{
+				padding: 24px 32px 0 0;
+			}
+
+			@include media('<=tablet')
+			{
+				padding: 24px 0;
+				border-left: 0;
+				border-right: 0;
+			}
+			
+			.post,
+			.attachment 
+			{
+				margin-bottom: 48px;
+
+				.entry-featured
+				{
+					img
+					{
+						width: 100%;
+					}
+				}
+
+				.entry-content
+				{
+					p
+					{
+						text-align: justify;
+					}
+
+					a:not(.wp-block-button__link):not(.wp-block-file__button)
+					{
+						color: $accent_color;
+						
+						&:hover,
+						&:focus
+						{
+							color: $black;
+						}
+					}
+				}
+
+				@import '../posts/posts-mixins';
+				@import 'single_header';
+				@import 'single_footer';
+				@import 'single-formats/single_format_audio';
+				@import 'single-formats/single_format_video';
+				@import 'single-formats/single_format_quote';
+				@import 'single-designs/single_standard';
+				@import 'single-designs/single_newspaper';
+				
+				.post-edit-link
+				{
+				    display: inline-block;
+				    text-align: right;
+				    width: 100%;
+				    font-size: 14px;
+				    text-transform: uppercase;
+				    font-weight: bold;
+				    letter-spacing: 2.5px;
+				}
+			}
+		}
+
+		.widget-area
+		{
+			grid-area: sidebar;
+		}
+	}
+}

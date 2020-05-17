@@ -1,0 +1,240 @@
+/*  -----------------------------------------------------------------------------------------------
+    Related Posts
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.related-posts
+{
+	width: 100%;
+	overflow: hidden;
+	
+	h3
+	{
+		@extend .flex-item;
+		font-size: 18px;
+	    position: relative;
+	    margin-top: 0;
+	    text-transform: uppercase;
+	    letter-spacing: 0.1em;
+	    position: relative;
+		    
+	    &:before
+	    {
+	    	content: "";
+    	    width: 5px;
+    	    height: 5px;
+    	    display: inline-block;
+    	    margin-right: 12px;
+    	    background-color: $accent_color;
+	    }
+	}
+
+	.related-posts-intro
+	{
+		@extend .flex-item;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+		
+		svg
+		{
+			width: 24px;
+			height: 24px;
+		}
+
+		.entry-related-navigation
+		{
+			display: flex;
+			margin-right: 5px;
+			margin-bottom: 24px;
+			
+			button
+			{
+				display: flex;
+				transition: fill .25s;
+				
+				&:hover
+				{
+					svg
+					{
+						fill: $accent_color;
+					}
+				}
+				
+				&#related_prev_button
+				{
+					margin-right: 8px;
+				}
+
+				&#related_next_button
+				{
+					transform: rotate(-180deg);
+				}
+			}
+		}
+	}
+
+	.related-posts-wrapper
+	{
+		width: 100%;
+		display: flex;
+		
+		&:not(.slick-slider)
+		{
+			.post
+			{
+				width: calc(100% / 4);
+			}
+		}
+		
+		.slick-prev,
+		.slick-next
+		{
+		    top: -56px;
+		    left: auto;
+		    transition: all .25s;
+		    
+		    &:hover,
+		    &:focus
+		    {
+		    	background: none;
+		    	border: 1px solid;
+		    	
+		    	&:before,
+		    	&:after
+		    	{
+		    		transition: all .25s;
+		    	}
+		    }
+		}
+
+		.post
+		{
+			margin-bottom: 24px;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			
+			@include media('<=tablet')
+			{
+				width: 100%;
+				margin-bottom: 0;
+				margin-right: 0;
+				width: 100%;
+			}
+
+			&:hover,
+			&:focus
+			{
+				.hover 
+				{
+				    opacity: 1;
+				    top: 50%;
+				    transform: translate(-50%, -50%);
+				}
+
+				a
+				{
+					&.entry-image
+					{
+						&:after
+						{
+						    opacity: 1;
+						    z-index: 1;
+						    visibility: visible;
+						    height: 100%;
+						}
+					}
+				}
+			}
+			
+
+			.hover 
+			{
+				position: absolute;
+				top: 0%;
+				left: 50%;
+				transform: translate(-50%, 0);
+				z-index: 100;
+				text-transform: uppercase;
+				text-align: center;
+				color: $white;
+				opacity: 0;
+				transition: all 0.3s;
+				backface-visibility: hidden;
+			}
+
+			a
+			{
+				&.entry-image
+				{
+					@extend .flex-item;
+					position: relative;
+					margin-bottom: 12px;
+					border-right: 5px solid $white;
+
+					
+					&:after
+					{
+						content: "";
+						display: block;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						left: 0;
+						width: 100%;
+						height: 0;
+						background: rgba($black, .4);
+						opacity: 0;
+						visibility: hidden;
+						z-index: -1;
+						transition: all .25s;
+					}
+
+					img
+					{
+						width: 100%;
+						height: 209px;
+						object-fit: cover;
+						
+						@include media('<=tablet')
+						{
+							height: 120px;
+						}
+					}
+				}
+			}
+			
+			.related-post-title
+			{
+				font-size: 20px;
+				padding-right: 12px;
+				margin: 0;
+				
+				@include media('<=tablet')
+				{
+					font-size: 16px;
+					line-height: 20px;
+					padding-right: 0;
+				}
+			}
+		}
+
+		&.slick-initialized
+		{
+			.post
+			{
+				a
+				{
+					&.entry-image
+					{
+						img
+						{
+							height: 209px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

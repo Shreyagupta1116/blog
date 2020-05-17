@@ -1,0 +1,40 @@
+
+//==============================================================================
+// widget_search
+//==============================================================================
+
+&.widget_search
+{
+	.search-form 
+	{
+		position: relative;
+	    display: flex;
+	    -webkit-justify-content: space-between;
+	            justify-content: space-between;
+
+	   label
+	   {    
+	        display: flex;
+	        width: 100%;
+	        
+	        input
+	        {
+	            margin: 0;
+	            width: 100%;
+	            padding: 12px;
+	            font-size: 14px;
+	            border: 1px solid $grey;
+	        }
+	   }
+
+	   .screen-reader-text
+	   {
+			position: absolute;
+			right: 0;
+			display: flex;
+			padding: 10px;
+			left: auto;
+	   }
+	  
+	}
+}

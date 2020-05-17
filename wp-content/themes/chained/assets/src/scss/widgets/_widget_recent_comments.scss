@@ -1,0 +1,19 @@
+//==============================================================================
+// widget_recent_comments
+//==============================================================================
+
+&.widget_recent_comments
+{
+    .recentcomments
+    {
+        color: darken($grey, 30%);
+        
+        .comment-author-link
+        {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            padding-right: 5px;
+        }
+    }
+}

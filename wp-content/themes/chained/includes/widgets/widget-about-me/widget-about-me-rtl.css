@@ -1,0 +1,26 @@
+/*-----------------------------------------------------------------------------------------------
+	   Widget About Me RTL Styles
+--------------------------------------------------------------------------------------------------- */
+
+.widget .widget-inside .chained-about-me-widget-form .chained-about-me-widget-image-control.is-hidden {
+	display: none;
+}
+
+.widget .widget-inside .chained-about-me-widget-form .chained-about-me-widget-image-control {
+	border: 1px dashed #aaa;
+	padding: 20px 0;
+	text-align: center;
+}
+
+.widget .widget-inside .chained-about-me-widget-form .chained-about-me-widget-image-control.has-image {
+	border: 1px dashed #aaa;
+	padding: 10px;
+	text-align: left;
+}
+
+.widget .widget-inside .chained-about-me-widget-form .chained-about-me-widget-image-control img {
+	display: block;
+	height: auto;
+	margin-bottom: 10px;
+	max-width: 100%;
+}

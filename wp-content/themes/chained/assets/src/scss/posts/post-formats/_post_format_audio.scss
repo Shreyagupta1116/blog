@@ -1,0 +1,47 @@
+/*  -----------------------------------------------------------------------------------------------
+    Post Format Audio
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+&.format-audio
+{
+	.entry-media
+	{
+		text-align: center;
+		padding: 0 0;
+		
+		iframe
+		{
+			max-width: 100%;
+		}
+
+		.entry-featured
+		{
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			
+			.audio-element
+			{
+				// box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				border-left: 1px solid $grey;
+				border-right: 1px solid $grey;
+				
+				audio
+				{
+					display: flex;
+				}
+			}
+		}
+	}
+
+	.entry-content-inner
+	{
+		border-top: 0;
+		
+		.entry-meta
+		{
+			margin-bottom: 12px;
+		}
+	}
+}

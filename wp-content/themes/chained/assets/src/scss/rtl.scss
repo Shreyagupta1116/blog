@@ -1,0 +1,238 @@
+/*  -----------------------------------------------------------------------------------------------
+    RTL Styles - Exports in theme root - rtl.css
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+.rtl .site-header .main-navigation .nav--main > li
+{
+	margin-right: 0;
+	margin-left: 24px;
+}
+
+.rtl .site-header .main-navigation .nav--main > li:last-child
+{
+	margin-left: 0;
+}
+
+.rtl .site-header .main-navigation .nav--main .menu-item-has-children > ul
+{
+	right: 0;
+}
+
+.rtl .site-header .main-navigation .nav--main .menu-item-has-children > ul .menu-item-has-children ul
+{
+	left: auto;
+	right: 100%;
+}
+
+.rtl .site-header .social-navigation
+{
+	margin-left: 0;
+}
+
+.rtl .site-header .social-navigation .site-search-opener 
+{
+    margin-left: 0;
+    margin-right: 24px;
+}
+
+.rtl .site-header .social-navigation .nav--social li:last-child
+{
+	margin-right: 24px;
+}
+
+.rtl .topbar .wrapper ul li:first-child
+{
+	margin-right: 0;
+}
+
+.rtl .topbar .wrapper ul li:last-child
+{
+	margin-right: 12px;
+}
+
+
+.rtl .site-header.header-style-1 .wrapper .header-left 
+{
+    margin-right: 0;
+    margin-left: 24px;
+}
+
+.rtl .site-footer .nav--footer li:first-child
+{
+	margin-right: 0;
+}
+
+.rtl .site-footer .nav--footer li:last-child
+{
+	margin-right: 32px;
+}
+
+.rtl .site-header.header-style-1 .wrapper .header-left .site-offcanvas-opener 
+{
+    margin-right: 0;
+    margin-left: 24px;
+}
+
+.rtl .site-header.header-style-1 .wrapper .header-left .main-navigation 
+{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.rtl .site-header.header-style-2 .header-row-1 .site-offcanvas-opener 
+{
+    margin-right: 0;
+    margin-left: 24px;
+}
+
+.rtl .site-header.header-style-2 .header-row-1 .social-navigation 
+{
+    margin-right: 24px;
+}
+
+
+.rtl .site-header.header-style-3 .header-left {
+    margin-right: 0;
+}
+
+.rtl .site-header.header-style-3 .header-left .site-offcanvas-opener {
+    margin-right: 0;
+    margin-left: 24px;
+}
+
+.rtl .masonry .wrapper .masonry-panel__content article .entry-meta svg 
+{
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.rtl .masonry .wrapper .masonry-panel__content article .entry-meta .meta-information span 
+{
+    margin-right: 0;
+    margin-left: 6px;
+}
+
+.rtl .masonry .wrapper .masonry-panel__content article .entry-meta svg 
+{
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.rtl .masonry .wrapper .masonry-panel__content article .entry-footer .post-edit-link:before 
+{
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .related-posts h3:before,
+.rtl .widget-area .widget.widget_chained_recentpost_widget .widget-post .post-wrap a.image,
+.rtl .single-content .single-content-wrapper .single-content-inner .comments-area .comments-area-title h3:before
+{
+	margin-right: 0;
+	margin-left: 12px;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .comment-respond .comment-form p.logged-in-as 
+{
+    display: -webkit-box;
+    display: flex;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner 
+{
+    padding: 24px 0 0 64px;
+    border-right: 0;
+    border-left: 1px solid #efefef;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .post .post-edit-link,
+.rtl .single-content .single-content-wrapper .single-content-inner .attachment .post-edit-link 
+{
+    text-align: left;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .post .entry-header .entry-posted-on .single-author,
+.rtl .single-content .single-content-wrapper .single-content-inner .attachment .entry-header .entry-posted-on .single-author,
+.rtl .single-content .single-content-wrapper .single-content-inner .author-info .author-info-inner .author-avatar,
+.rtl .widget-area .widget h4.widget-title:before
+{
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .post .entry-header .entry-posted-on .single-author a, .rtl .single-content .single-content-wrapper .single-content-inner .attachment .entry-header .entry-posted-on .single-author a {
+    margin-right: 6px;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .post .entry-header .entry-posted-on a > *,
+.rtl .single-content .single-content-wrapper .single-content-inner .attachment .entry-header .entry-posted-on a > * 
+{
+    margin-right: 0;
+}
+
+.rtl .single-content .single-content-wrapper .single-content-inner .post .content-with-socials .content-and-image, .rtl .single-content .single-content-wrapper .single-content-inner .attachment .content-with-socials .content-and-image {
+    padding: 0 64px 0 0;
+}
+
+.rtl .site-footer .back-to-top
+{
+	right: auto;
+	left: 30px;
+}
+
+.rtl .wp-block-table th,
+.rtl .wp-block-table td,
+.rtl table th,
+.rtl table td
+{
+	text-align: right;
+}
+
+@media (max-width: 1366px)
+{
+	.rtl .single-content .single-content-wrapper .single-content-inner 
+	{
+	    padding: 24px 0 0 48px;
+	}
+}
+
+@media (max-width: 1280px)
+{
+	.rtl .single-content .single-content-wrapper .single-content-inner 
+	{
+	    padding: 24px 0 0 32px
+	}
+}
+
+
+@media (max-width: 1024px)
+{
+	.rtl .site-header.header-style-3 .social-navigation .site-search-opener 
+	{
+	    margin-left: 0;
+	}
+
+	.rtl .site-header.header-style-2 .header-row-1 .social-navigation .site-search-opener 
+	{
+	    margin-right: 0;
+	}
+
+	.rtl .site-header.header-style-1 .wrapper .header-left .site-offcanvas-opener 
+	{
+		margin-left: 0;
+	}
+}
+
+
+@media (max-width: 768px)
+{
+	.rtl .single-content .single-content-wrapper .single-content-inner 
+	{
+	    padding: 24px 0;
+        border-left: 0;
+        border-right: 0;
+	}
+}
+
+

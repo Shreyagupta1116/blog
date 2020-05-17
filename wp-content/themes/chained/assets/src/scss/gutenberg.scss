@@ -1,0 +1,45 @@
+/*  -----------------------------------------------------------------------------------------------
+    Gutenberg Style - It compiles in assets/dist/css/gutenberg.css
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('../fonts/RobotoCondensed-Light.woff2') format('woff2'),
+        url('../fonts/RobotoCondensed-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+// Variables
+$main_editor_font: 'Roboto Condensed', serif;
+
+.edit-post-visual-editor 
+{
+	font-family: $main_editor_font;
+	
+	.wp-block
+	{
+		max-width: 740px;
+	}
+	
+	.editor-post-title
+	{
+		.editor-post-title__block
+		{
+			 .editor-post-title__input
+			 {
+			 	font-family: $main_editor_font;
+			 	font-size: 48px;
+			 	line-height: 1.1;
+			 	text-transform: uppercase;
+			 	letter-spacing: 2.5px;
+			 }
+		}
+	}
+
+	.block-editor-block-list__block
+	{
+	 	font-family: $main_editor_font !important;
+	}
+}

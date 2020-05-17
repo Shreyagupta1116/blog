@@ -1,0 +1,294 @@
+/*  -----------------------------------------------------------------------------------------------
+    Helpers
+    @package v.1.0.0
+--------------------------------------------------------------------------------------------------- */
+
+@import "~include-media/dist/include-media";
+
+@mixin left-right-distance($width: 'auto') {
+    $distance: 20px;
+    padding-left: $distance;
+    padding-right: $distance;
+
+    @if $width == 'auto' {
+    } @else {
+        max-width: calc(#{$width} + (2 * #{$distance}));
+    }
+
+    @include media('>=tablet') {
+        $distance: 24px;
+        padding-left: $distance;
+        padding-right: $distance;
+
+        @if $width == 'auto' {
+        } @else {
+            max-width: calc(#{$width} + (2 * #{$distance}));
+        }
+    }
+
+    @include media('>=desktop') {
+        $distance: 40px;
+        padding-left: $distance;
+        padding-right: $distance;
+
+        @if $width == 'auto' {
+        } @else {
+            max-width: calc(#{$width} + (2 * #{$distance}));
+        }
+    }
+}
+
+
+$breakpoints: (
+    'phone-small':390px,
+    'phone': 480px,
+    'ads' : 640px,
+    'tablet': 768px,
+    'desktop': 1024px,
+    'semi-huge': 1200px,
+    'huge': 1280px,
+    'hd': 1366px,
+    'bighd': 1440px,
+);
+
+$wrapper_gutter: 24px;
+
+.wrapper
+{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1600px;
+    width: 100%;
+
+    &.admin-bar
+    {
+        margin-top: 32px;
+    }
+}
+
+.flex-item
+{
+	display: flex;
+	align-items: center;
+}
+
+.inline-list
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+@mixin input-placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+    &:-moz-placeholder {
+        @content
+    }
+    &::-moz-placeholder {
+        @content
+    }
+    &:-ms-input-placeholder {
+        @content
+    }
+}
+
+
+@mixin button
+{
+    @extend .bgblack;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-family: $headings_font;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    transition: background-color .25s;
+    
+    &:hover,
+    &:focus
+    {
+        @extend .bgaccent;
+    }
+}
+
+
+@mixin loader
+{
+    .spinner,
+    .spinner:before,
+    .spinner:after 
+    {
+      border-radius: 50%;
+      width: 10px !important;
+      height: 10px;
+      animation-fill-mode: both;
+      animation: loader 1.8s infinite ease-in-out;
+    }
+
+    .spinner
+    {
+        @extend .accent;
+        font-size: 10px;
+        margin: 80px auto;
+        position: relative;
+        text-indent: -9999em;
+        transform: translateZ(0);
+        animation-delay: -0.16s;
+        
+        > div
+        {
+            display: none;
+        }
+        
+        &:before,
+        &:after
+        {
+            content: '';
+            position: absolute;
+            top: 0;
+        }
+
+        &:before
+        {
+            left: -15px;
+            animation-delay: -0.32s;
+        }
+
+        &:after
+        {
+            left: 15px;
+        }
+    }
+  
+}
+
+@keyframes loader 
+{
+    0%,
+    80%,
+    100% 
+    {
+        box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% 
+    {
+        box-shadow: 0 2.5em 0 0;
+    }
+}
+
+@mixin elements_padding_on_sides($large: 48px, $desktop: 32px, $tablet: 24px)
+{
+    padding-left: $large;
+    padding-right: $large;
+    
+    @include media('<=desktop')
+    {
+        padding-left: $desktop;
+        padding-right: $desktop;
+    }
+
+    @include media('<=tablet')
+    {
+        padding-left: $tablet;
+        padding-right: $tablet;
+    }
+}
+
+@keyframes drop_down
+{
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(-3px) scale(0.85);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(-3px) scale(1);
+    }
+}
+
+@keyframes drop
+{
+    0%      { top: -350px; }
+    100%    { top: 0; }
+}
+
+@mixin bgcolor($color)
+{
+    background-color: $color;
+}
+
+@mixin color($color)
+{
+    color: $color;
+}
+
+@mixin fill($color)
+{
+    fill: $color;
+}
+
+//Colors
+.black
+{
+    color: $black;
+}
+
+.white
+{
+    color: $white;
+}
+
+.accent
+{
+    color: $accent_color;
+}
+
+.grey
+{
+    color: $grey;
+}
+
+.transparent
+{
+    color: transparent;
+}
+
+// Fill
+.fillwhite
+{
+    fill: $white;
+}
+
+.fillblack
+{
+    fill: $black;
+}
+
+.fillaccent
+{
+    fill: $accent_color;
+}
+
+
+// Backgrounds
+.bgwhite
+{
+    background-color: $white;
+}
+
+.bgblack
+{
+    background-color: $black;
+}
+
+.bgaccent
+{
+    background-color: $accent_color;
+}
+

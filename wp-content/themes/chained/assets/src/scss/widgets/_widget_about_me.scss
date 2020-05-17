@@ -1,0 +1,64 @@
+//==============================================================================
+// widget_about_me
+//==============================================================================
+
+&.widget_chained_about_me
+{
+    border: 1px solid $grey;
+    
+    .widget_chained-about-me-widget__image
+    {
+        position: relative;
+        
+        .widget-title
+        {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            bottom: 0;
+            margin: 0;
+            background: $black;
+            color: $white;
+            padding: 0 15px;
+        }
+    }
+    
+    .widget_chained-about-me-widget__container
+    {
+        padding: 24px;
+        text-align: center;
+        
+        .widget-title
+        {
+            margin: 0;
+        }
+
+        .widget_chained-about-me-widget__name
+        {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+            padding-bottom: 24px;
+            
+            &:after
+            {
+                content: "";
+                width: 100px;
+                margin-top: 12px;
+                height: 1px;
+                display: block;
+                ;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .widget_chained-about-me__text
+        {
+            font-style: italic;
+            font-size: 16px;
+            opacity: .7;
+        }
+    }
+}
